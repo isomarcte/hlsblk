@@ -1,0 +1,61 @@
+name:                hlsblk
+version:             0.1.0.0
+github:              "isomarcte/hlsblk"
+license:             BSD3
+author:              "David Strawn"
+maintainer:          "isomarcte@gmail.com"
+copyright:           "2018 David Strawn, isomarcte@gmail.com"
+
+extra-source-files:
+- README.md
+
+description: A small Haskell library to provide block device information on Linux
+
+dependencies:
+- base >= 4.7 && < 5
+- aeson
+- attoparsec
+- containers
+- hashable
+- process-extras
+- scientific
+- text
+- unordered-containers
+- uuid
+
+default-extensions:
+  - DataKinds
+  - DeriveDataTypeable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveTraversable
+  - DisambiguateRecordFields
+  - EmptyDataDecls
+  - FlexibleContexts
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - OverloadedLists
+  - OverloadedStrings
+  - StandaloneDeriving
+  - StrictData
+
+ghc-options:
+  - -Wall
+  - -Werror
+
+library:
+  source-dirs: src
+  exposed-modules: Data.BlockDevice
+
+tests:
+  hlsblk-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hlsblk
