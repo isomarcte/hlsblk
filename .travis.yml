@@ -1,0 +1,58 @@
+language: haskell
+matrix:
+  include:
+    - name: "Stack LTS 13.18"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-13.18'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+    - name: "Stack LTS 13.11"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-13.11'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+    - name: "Stack LTS 12.26"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-12.16'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+    - name: "Stack LTS 12.14"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-12.14'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+    - name: "Stack LTS 11.22"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-11.22'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+    - name: "Stack LTS 9.21"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-9.21'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
+ghc:
+  # - "7.8" Need To Remove StrictData for GHC 7.x
+  # - "7.10"
+  - "8.0"
+  - "8.2"
+  - "8.4"
+  - "8.6"
