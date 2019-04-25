@@ -1,3 +1,5 @@
 .stack-work/
-hlsblk.cabal
 *~
+/cabal.project.local
+/dist-newstyle/
+/.ghc.environment*
