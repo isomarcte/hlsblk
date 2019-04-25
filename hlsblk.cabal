@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 46a1475c4f40776b20239685e9c920a0bfd8cca020b389398cfb49e042c46514
+-- hash: 4602f80a78d250de24ddbb360b6da3dd109bf3ba8a70e1fb01da99f3ee91e308
 
 name:           hlsblk
 version:        0.1.0.0
@@ -27,10 +27,10 @@ source-repository head
 library
   exposed-modules:
       Data.BlockDevice
+      System.BlockDevice
   other-modules:
       Data.BlockDevice.Internal.JSON
       Data.BlockDevice.Internal.Parsers
-      System.BlockDevice
       Paths_hlsblk
   hs-source-dirs:
       src
