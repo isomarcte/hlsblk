@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4602f80a78d250de24ddbb360b6da3dd109bf3ba8a70e1fb01da99f3ee91e308
+-- hash: d6eeb5986d41fef65e2fd0ddcb3978f71bdb3896f43017dabb54b19867fcf9e5
 
 name:           hlsblk
 version:        0.1.0.0
@@ -42,6 +42,7 @@ library
     , base >=4.7 && <5
     , containers
     , hashable
+    , mtl
     , process-extras
     , scientific
     , text
@@ -65,6 +66,7 @@ test-suite hlsblk-test
     , containers
     , hashable
     , hlsblk
+    , mtl
     , process-extras
     , scientific
     , text
