@@ -1,6 +1,14 @@
 language: haskell
 matrix:
   include:
+    - name: "Stack LTS 13.21"
+      ghc: "8.6"
+      env: STACK_VERSION='lts-13.21'
+      script:
+        - curl -sSL https://get.haskellstack.org/ | sh
+        - stack --resolver "$STACK_VERSION" clean
+        - stack --resolver "$STACK_VERSION" build
+        - stack --resolver "$STACK_VERSION" test
     - name: "Stack LTS 13.19"
       ghc: "8.6"
       env: STACK_VERSION='lts-13.19'
