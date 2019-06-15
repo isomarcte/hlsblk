@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d6eeb5986d41fef65e2fd0ddcb3978f71bdb3896f43017dabb54b19867fcf9e5
+-- hash: 7a92145f9524c705af59d16ec77817cfef39331400ee269d14bff3fe6b2f63f7
 
 name:           hlsblk
-version:        0.1.0.0
+version:        0.0.0.1
 description:    A small Haskell library to provide block device information on Linux
 homepage:       https://github.com/isomarcte/hlsblk#readme
 bug-reports:    https://github.com/isomarcte/hlsblk/issues

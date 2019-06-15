@@ -4,7 +4,7 @@ module Data.BlockDevice
   , Percentage(..)
   , DeviceName(..)
   , KernelDeviceName(..)
-  , DevicePath
+  , DevicePath(..)
   , MajorDeviceNumber(..)
   , MinorDeviceNumber(..)
   , AvailableFileSystemSpace(..)
