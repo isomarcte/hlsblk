@@ -74,7 +74,6 @@ import Data.Maybe (Maybe(..))
 import Data.Ord (Ord(..))
 import Data.Semigroup ((<>))
 import Data.String (IsString(..))
-import Data.UUID (UUID)
 import Data.Word (Word)
 import GHC.Generics (Generic)
 import Prelude (Bounded, Enum, Integral(..), Num, Real)
@@ -266,7 +265,7 @@ newtype PartitionTableType =
   deriving (Show, Eq, Ord, DA.FromJSON, DA.ToJSON, Generic)
 
 newtype PartitionType =
-  PartitionType UUID
+  PartitionType DT.Text
   deriving (Show, Eq, Ord, DA.FromJSON, DA.ToJSON, Generic)
 
 newtype PartitionLabel =
@@ -278,7 +277,7 @@ newtype FileSystemUUID =
   deriving (Show, Eq, Ord, DA.FromJSON, DA.ToJSON, Generic)
 
 newtype PartitionUUID =
-  PartitionUUID UUID
+  PartitionUUID DT.Text
   deriving (Show, Eq, Ord, DA.FromJSON, DA.ToJSON, Generic)
 
 newtype PartitionFlags =

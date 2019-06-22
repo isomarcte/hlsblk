@@ -22,7 +22,6 @@ dependencies:
 - scientific
 - text
 - unordered-containers
-- uuid
 
 default-extensions:
   - DataKinds
