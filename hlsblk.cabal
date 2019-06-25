@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7a92145f9524c705af59d16ec77817cfef39331400ee269d14bff3fe6b2f63f7
+-- hash: 57aae1609146cfacd5f2904052cdc790816d7c4a09fb8dc9ce9fb1e0976537ed
 
 name:           hlsblk
 version:        0.0.0.1
@@ -47,7 +47,6 @@ library
     , scientific
     , text
     , unordered-containers
-    , uuid
   default-language: Haskell2010
 
 test-suite hlsblk-test
@@ -71,5 +70,4 @@ test-suite hlsblk-test
     , scientific
     , text
     , unordered-containers
-    , uuid
   default-language: Haskell2010
