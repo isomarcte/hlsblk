@@ -17,10 +17,10 @@ dependencies:
 - attoparsec
 - containers
 - hashable
-- mtl
 - process-extras
 - scientific
 - text
+- transformers
 - unordered-containers
 
 default-extensions:

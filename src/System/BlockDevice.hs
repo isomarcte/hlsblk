@@ -7,9 +7,9 @@ module System.BlockDevice
   , errorMessage'
   ) where
 
-import Control.Monad (return)
-import Control.Monad.Except (MonadError(..), runExceptT)
+import Control.Monad (Monad(return))
 import Control.Monad.IO.Class (MonadIO(..))
+import Control.Monad.Trans.Except (Except(..), ExceptT(..), throwE)
 import Data.Bool (otherwise)
 import Data.Either (Either(..), either)
 import Data.Eq (Eq(..))
@@ -35,7 +35,7 @@ defaultFlags :: DS.Set DT.Text
 defaultFlags = DS.fromList ["-J", "-a", "-O", "-b"]
 
 listBlockDevices ::
-     (MonadError Error m, MonadIO m) => DS.Set DT.Text -> m [DB.BlockDevice]
+     (MonadIO m) => DS.Set DT.Text -> ExceptT Error m [DB.BlockDevice]
 listBlockDevices flags =
   let flags' = DS.toList . DS.map DT.unpack $ DS.insert jsonFlag flags
    in do (ec, out, err) <-
@@ -82,18 +82,18 @@ errorMessage (StdOutIsNotValidJson stdout err) =
 errorMessage' :: Error -> String
 errorMessage' = DT.unpack . errorMessage
 
-guardExitCode :: (MonadError Error m) => ExitCode -> DT.Text -> m ()
-guardExitCode (ExitFailure i) err = throwError $ NonzeroExitCode i err
+guardExitCode :: (Monad m) => ExitCode -> DT.Text -> ExceptT Error m ()
+guardExitCode (ExitFailure i) err = throwE $ NonzeroExitCode i err
 guardExitCode _ _ = return ()
 
-stdoutToJson :: (MonadError Error m) => DT.Text -> m DA.Value
+stdoutToJson :: DT.Text -> Except Error DA.Value
 stdoutToJson out =
   either
     (throwError . StdOutIsNotValidJson out)
     return
     (DA.eitherDecodeStrict' $ DTE.encodeUtf8 out)
 
-jsonToBlockDevice :: (MonadError Error m) => DA.Value -> m [DB.BlockDevice]
+jsonToBlockDevice :: DA.Value -> Except Error [DB.BlockDevice]
 jsonToBlockDevice v =
   case DA.fromJSON v of
     DA.Error err -> throwError $ InvalidBlockDeviceValue v err
@@ -110,7 +110,7 @@ stdErrMessageOrNothing err
 lsblkPath :: FilePath
 lsblkPath = "/bin/lsblk"
 
-unwrap :: (MonadError Error m) => DA.Value -> m DA.Value
+unwrap :: DA.Value -> Except Error DA.Value
 unwrap v@(DA.Object o) =
   let key = "blockdevices"
    in maybe (throwError $ UnexpectedJsonValue v) return (DHS.lookup key o)
