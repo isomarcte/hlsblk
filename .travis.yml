@@ -1,9 +1,9 @@
 language: haskell
 matrix:
   include:
-    - name: "Stack LTS 13.26"
+    - name: "Stack LTS 14.0"
       ghc: "8.6"
-      env: STACK_VERSION='lts-13.26'
+      env: STACK_VERSION='lts-14.0'
       script:
         - curl -sSL https://get.haskellstack.org/ | sh
         - stack --resolver "$STACK_VERSION" clean
